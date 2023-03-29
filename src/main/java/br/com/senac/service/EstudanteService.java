@@ -5,6 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -71,6 +73,11 @@ public class EstudanteService {
 		
 		return ResponseEntity.status(HttpStatus.NOT_FOUND).body(" Estudante não existe");
 		
+		
+	}
+	
+	public Page<Estudante> buscaEstudantePorPaginacao(PageRequest page){
+		return estudanteRepository.findAll(page);
 		
 	}
 //		Estudante estudanteEncontrado = listaEstudantes.get(id);
